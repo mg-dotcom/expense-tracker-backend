@@ -12,7 +12,7 @@ A RESTful API for tracking personal expenses, built with **Spring Boot**, **Post
 | Spring Boot | 3.5.13 |
 | Spring Data JPA | - |
 | PostgreSQL | 17 |
-| Gemini AI | 2.0 Flash |
+| Gemini AI | 2.5 Flash |
 | Lombok | - |
 | Maven | - |
 
