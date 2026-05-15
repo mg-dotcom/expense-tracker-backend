@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/expenses")
@@ -18,7 +19,11 @@ public class ExpenseController {
     private final GeminiService geminiService;
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<Expense>>> getAllExpenses() {
+    public ResponseEntity<ApiResponse<List<Expense>>> getAllExpenses(
+            @RequestParam(required = false) String category) {
+        if (category != null){
+            return ResponseEntity.ok(ApiResponse.ok(expenseService.getExpensesByCategory(category)));
+        }
         return ResponseEntity.ok(ApiResponse.ok(expenseService.getAllExpenses()));
     }
 
@@ -48,5 +53,10 @@ public class ExpenseController {
         List<Expense> expenses = expenseService.getAllExpenses();
         String analysis = geminiService.analyzeExpenses(expenses);
         return ResponseEntity.ok(ApiResponse.ok(analysis));
+    }
+
+    @GetMapping("/summary")
+    public ResponseEntity<ApiResponse<Map<String, Double>>> getExpenseSummary(){
+        return ResponseEntity.ok(ApiResponse.ok(expenseService.getExpenseSummary()));
     }
 }
