@@ -32,11 +32,12 @@ A RESTful API for tracking personal expenses, built with **Spring Boot**, **Post
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/expenses` | Get all expenses |
+| `GET` | `/expenses` | Get all expenses (Supports `?category=` filter) |
 | `POST` | `/expenses` | Add new expense |
 | `PUT` | `/expenses/{id}` | Update expense |
 | `DELETE` | `/expenses/{id}` | Delete expense |
 | `GET` | `/expenses/analyze` | AI spending analysis |
+| `GET` | `/expenses/summary` | Get expense summary grouped by category |
 
 ---
 
